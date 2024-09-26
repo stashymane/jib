@@ -128,10 +128,7 @@ public class JibExtension {
         objectFactory
             .property(String.class)
             .convention(JavaPlugin.RUNTIME_CLASSPATH_CONFIGURATION_NAME);
-      sourceSetName =
-          objectFactory
-              .property(String.class)
-              .convention(SourceSet.MAIN_SOURCE_SET_NAME);
+    sourceSetName = objectFactory.property(String.class).convention(SourceSet.MAIN_SOURCE_SET_NAME);
   }
 
   public void from(Action<? super BaseImageParameters> action) {
