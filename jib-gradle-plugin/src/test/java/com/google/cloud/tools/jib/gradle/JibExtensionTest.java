@@ -250,6 +250,11 @@ public class JibExtensionTest {
   }
 
   @Test
+  public void testSourceSet() {
+    assertThat(testJibExtension.getSourceSetName().get()).isEqualTo("main");
+  }
+
+  @Test
   public void testExtraDirectories_default() {
     assertThat(testJibExtension.getExtraDirectories().getPaths()).hasSize(1);
     assertThat(testJibExtension.getExtraDirectories().getPaths().get(0).getFrom())
@@ -573,6 +578,8 @@ public class JibExtensionTest {
         .isEqualTo(fakeProject.getProjectDir().toPath().resolve("tar/path"));
     System.setProperty("jib.configurationName", "myConfiguration");
     assertThat(testJibExtension.getConfigurationName().get()).isEqualTo("myConfiguration");
+    System.setProperty("jib.sourceSetName", "mySourceSet");
+    assertThat(testJibExtension.getSourceSetName().get()).isEqualTo("mySourceSet");
   }
 
   private TargetImageParameters generateTargetImageParametersWithTags(String... tags) {
